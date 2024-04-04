@@ -1,0 +1,43 @@
+﻿@model List<CONSUMIR_API_TEST.Models.DeviceType>
+@{
+    ViewData["Title"] = "Device Type";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Gestión Device Type</h1>
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de device type</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="DeviceType" asp-controller="Home" asp-route-IdDevice="0">Crear Nuevo</a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id. Device Type</th>                    
+                    <th>Description</th>
+                    <th>Display Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdDevice</td>
+                        <td>@item.Description</td>
+                        <td>@item.DisplayName</td>                        
+                        <td>
+                            <a class="btn btn-primary btn-sm " asp-action="DeviceType" asp-controller="Home" asp-route-idDevice="@item.IdDevice"> Editar</a>
+                            <a class="btn btn-danger btn-sm " asp-action="EliminarDeviceTypeAutorizacion" asp-controller="Home" asp-route-idDevice="@item.IdDevice"> Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
